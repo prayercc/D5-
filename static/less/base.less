@@ -1,0 +1,64 @@
+@import './reset.less';
+@import './baseconf.less';
+
+/*reset*/
+.reset-normalize();
+
+/*start*/
+body {
+    background: @base_color;
+    font-size: @base_textSize;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    border: none;
+    //iphone/ipad
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+// transition animation
+
+//页面切换
+.slide-back-enter-active,
+.slide-back-leave-active {
+    transition: all .4s;
+}
+.slide-back-enter,
+.slide-back-leave-to {
+    transform: translate3d(-100%, 0, 0);
+}
+
+//页面退出
+.slide-go-enter-active,
+.slide-go-leave-active {
+    transition: all .4s;
+    opacity: .8;
+}
+.slide-go-enter,
+.slide-go-leave-to {
+    transform: translate3d(100%, 0, 0);
+    opacity: .8;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+    transition: all .4s
+}
+
+.slide-up-enter,
+.slide-up-leave-to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+}
