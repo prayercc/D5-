@@ -28,6 +28,42 @@ const Detail = (resolve)=> {
     resolve(module);
   })
 }
+const Orders = (resolve)=>{
+  import('@/components/member/orders.vue').then((module)=>{
+    resolve(module);
+  })
+}
+//二级路由
+    const Dfk = (resolve)=>{
+      import('@/components/member/items/dfk').then((module)=>{
+        resolve(module);
+      })
+    }
+    const Dfh = (resolve)=>{
+      import('@/components/member/items/dfh').then((module)=>{
+        resolve(module);
+      })
+    }
+    const Dsh = (resolve)=>{
+      import('@/components/member/items/dsh').then((module)=>{
+        resolve(module);
+      })
+    }
+    const Dpj = (resolve)=>{
+      import('@/components/member/items/dpj').then((module)=>{
+        resolve(module);
+      })
+    }
+    const Sh = (resolve)=>{
+      import('@/components/member/items/sh').then((module)=>{
+        resolve(module);
+      })
+    }
+    const OrderDetails = (resolve)=>{
+      import('@/components/member/items/orderDetails').then((module)=>{
+        resolve(module);
+      })
+    }
 export default new Router({
   mode: 'history',
   routes: [
@@ -49,11 +85,41 @@ export default new Router({
     },
     {
       path: '/member',
-      component: Member
+      component: Member,
     },
     {
       path: '/detail',
       component: Detail
+    },
+    {
+      path: '/orders',
+      component: Orders,
+      children: [
+        {
+          path: 'dfk',
+          component: Dfk
+        },
+        {
+          path: 'dfh',
+          component: Dfh
+        },
+        {
+          path: 'dsh',
+          component: Dsh
+        },
+        {
+          path: 'dpj',
+          component: Dpj
+        },
+        {
+          path: 'sh',
+          component: Sh
+        }
+      ]
+    },
+    {
+      path: '/orderDetails',
+      component: OrderDetails
     }
   ]
 })

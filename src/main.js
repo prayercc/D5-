@@ -7,7 +7,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueLazyLoad from 'vue-lazyload'
-import fastclick from 'fastclick'
+// import fastclick from 'fastclick'   记得卸载
 import Vconsole from 'vconsole'
 import VueTouch from 'vue-touch'
 require('./util/mock')
@@ -23,7 +23,7 @@ Vue.use(VueLazyLoad, {
   attempt: 1
 })
 //解决移动端点击事件200ms延迟
-fastclick.attach(document.body)
+// fastclick.attach(document.body)
 //vconsole
 let vConsole = new Vconsole()
 export default vConsole

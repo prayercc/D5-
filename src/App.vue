@@ -1,22 +1,21 @@
 <template>
   <div id="app">
-    <!-- header-->
-    <headers></headers>
     <!-- content -->
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
+
     <!-- footer -->
-    <footers :urlRouter="$route.path" ref="footer"></footers>
+    <footers :urlRouter="$route.path" ref="footer" ></footers>
   </div>
 </template>
 
 <script>
 import "../static/js/rem.js";
-import Headers from './components/base/Header'
 import Footers from './components/base/Footer'
 export default {
   name: 'App',
   components:{
-    Headers,
     Footers
   },
   created(){
@@ -28,15 +27,16 @@ export default {
     );
     window.addEventListener("beforeunload", () => {
       localStorage.setItem("storeMsg", JSON.stringify(this.$store.state));
-    });
-    console.log("加载/存储数据完成");
+    },false);
   }
 }
 </script>
 
 <style lang="less">
 @import "../static/less/base.less";
+
 #app {
   height: 100%;
+  background-color: #f0f0f0;
 }
 </style>

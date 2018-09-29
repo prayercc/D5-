@@ -13,6 +13,7 @@ body {
 body,
 html {
     height: 100%;
+    touch-action: manipulation;
 }
 
 a {
@@ -23,7 +24,6 @@ a {
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
-
 [v-cloak] {
     display: none;
 }
@@ -43,7 +43,7 @@ a {
 //页面退出
 .slide-go-enter-active,
 .slide-go-leave-active {
-    transition: all .4s;
+    transition: all .5s;
     opacity: .8;
 }
 .slide-go-enter,
@@ -61,4 +61,45 @@ a {
 .slide-up-leave-to {
     opacity: 0;
     transform: translate3d(0, 100%, 0);
+}
+// 数量增减
+.changeNumber{
+  display:inline-block;
+  text-align: center;
+  float: right;
+}
+.changeNumber span {
+  margin: 0 .2rem;
+}
+.numberIcon{
+  display: inline-block;
+  height: .50rem;
+  width:.50rem;
+  line-height: .50rem;
+  background-color: #f0f0f0;
+  border-radius: .1rem;
+  cursor: pointer;
+  &:active{
+    background-color: #ddd;
+  }
+}
+/* 重置checkbox */
+.regular-checkbox{
+	display: none;
+}
+.regular-checkbox + label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: .40rem;
+    height: .40rem;
+    text-align: center;
+    line-height: .35rem;
+    color: transparent;
+	  border: 1px solid #cacece;
+	  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	  border-radius: 50%;
+}
+.regular-checkbox:checked + label {
+	border-color: #ff4e22;
+  color: #ff4e22;
 }

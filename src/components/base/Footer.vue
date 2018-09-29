@@ -1,25 +1,25 @@
 <template lang="html">
      <footer>
        <div class="footer-item" :class="{active:urlRouter == '/index' || urlRouter == '/'}">
-          <router-link to='./index' tag="div">
+          <router-link to='/index' tag="div">
             <i class="footerIcon homeIcon"></i>
             <p class="footerTitle">首页</p>
           </router-link>
        </div>
        <div class="footer-item" :class="{active: urlRouter == '/wtao'}">
-         <router-link to='./wtao' tag="div">
+         <router-link to='/wtao' tag="div">
            <i class="footerIcon wtaoIcon" ></i>
            <p class="footerTitle">微淘</p>
           </router-link>
        </div>
        <div class="footer-item" :class="{active: urlRouter == '/cart'}">
-         <router-link to='./cart' tag="div">
+         <router-link to='/cart' tag="div">
            <i class="footerIcon cartIcon" ></i>
            <p class="footerTitle">购物车</p>
          </router-link>
        </div>
        <div class="footer-item" :class="{active: urlRouter == '/member'}">
-         <router-link to='./member' tag="div">
+         <router-link to='/member' tag="div">
            <i class="footerIcon memberIcon"></i>
            <p class="footerTitle">我的</p>
           </router-link>
@@ -48,7 +48,7 @@ footer {
     width: 100%;
     height: .88rem;
     align-items: center;
-    background: @base_color;
+    background: #fff;
     box-shadow: 0 -2px 5px #ddd;
 }
 .footer-item {

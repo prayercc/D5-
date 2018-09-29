@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="page" >
+    <headers></headers>
       <!-- content -->
       <transition :name="slidename">
           <div class="container" v-show="mainarea">
@@ -18,8 +19,7 @@
                 <span>热门推荐</span>
               </div>
               <div class="listBox">
-                <div class="goodsItem" v-for="(goods,index) in productList" :key="index"
-                   @click="onGoodsDetail(goods)">
+                <div class="goodsItem" v-for="(goods,index) in productList" :key="index" @click="onGoodsDetail(goods)">
                     <img v-lazy="goods.GoodsImage" class="itemImg" />
                     <div class="itemText">
                       <span>{{goods.GoodsName}}</span>
@@ -36,12 +36,14 @@
   </div>
 </template>
 <script>
+import Headers from './base/Header'
 import Carousel from 'vue-m-carousel'
 import IconList from './base/IconList'
 import { mapGetters, mapMutations } from 'vuex';
 export default {
   name: 'page',
   components: {
+    Headers,
     Carousel,
     IconList
   },
@@ -152,13 +154,13 @@ export default {
     },
     // 进入商品详情页面
     onGoodsDetail(goods){
+      this.setGoods(goods);
       this.$router.push({
         path: '/detail',
         query: {
           id: goods.CategoryId
         }
       });
-      this.setGoods(item);
     }
   },
   mounted(){
@@ -218,8 +220,7 @@ export default {
 .itemImg {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
-  min-height: 128px;//error图片的高度
+  width:80%;
   outline: none;
 }
 .itemText {
@@ -237,7 +238,7 @@ export default {
   margin: .1rem 0;
   &:first-child{
     margin-left: .2rem;
-    color: @theme_color;
+    color: @money_color;
     font-size: .32rem;
     line-height: .32rem;
     float: left;
