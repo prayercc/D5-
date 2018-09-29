@@ -1,5 +1,6 @@
 <template lang="html">
 <div class="container" v-show="mainarea">
+  <p class="back" @click="$router.go(-1)">&lt;&nbsp;返回</p>
       <div class="containTop">
         <img :src="goods.GoodsImage" class="goodsImg">
         <p class="containMoney">￥<span>{{goods.GoodsPrice}}</span></p>
@@ -49,9 +50,12 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import {
+  mapState,
+  mapMutations
+} from "vuex";
 export default {
-  data(){
+  data() {
     return {
       infoShow: false,
       isDialog: false,
@@ -63,9 +67,9 @@ export default {
       ]
     }
   },
-  watch:{
-    infoShow(){
-      if(this.infoShow){
+  watch: {
+    infoShow() {
+      if (this.infoShow) {
         setTimeout(() => {
           this.infoShow = false;
         }, 1000);
@@ -77,31 +81,31 @@ export default {
       goods: 'goods'
     })
   },
-  mounted(){
+  mounted() {
     this.mainarea = true;
   },
   methods: {
     ...mapMutations({
       setCarts: 'SET_CARTS'
     }),
-    showDialog(event){
-      if(event.target == event.currentTarget){
+    showDialog(event) {
+      if (event.target == event.currentTarget) {
         this.isDialog = !this.isDialog;
       }
     },
-    operator(oper){
-      if(oper == 'reduce'){
+    operator(oper) {
+      if (oper == 'reduce') {
         this.goods.GoodsBuyNum = this.goods.GoodsBuyNum - 1 > 1 ? this.goods.GoodsBuyNum - 1 : 1;
       } else {
         this.goods.GoodsBuyNum++;
       }
     },
-    addCart(){
+    addCart() {
       this.setCarts(this.goods);
       this.isDialog = false;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.infoShow = true;
-      },1000);
+      }, 1000);
     }
   }
 }
@@ -110,169 +114,178 @@ export default {
 <style lang="less" scoped>
 @import "../../../static/less/baseconf.less";
 .container {
-  width: 100%;
-  background-color: #fff;
+    width: 100%;
+    background-color: #fff;
 }
 .containTop {
-  width: 100%;
+    width: 100%;
 }
 .goodsImg {
-  display: block;
-  margin: 0 auto;
-  width: 5rem;
+    display: block;
+    margin: 0 auto;
+    width: 5rem;
 }
-.containMoney{
-  font-size: .25rem;
-  line-height: .35rem;
-  color: @money_color;
+.containMoney {
+    font-size: 0.25rem;
+    line-height: 0.35rem;
+    color: @money_color;
 }
 .containMoney span {
-  font-size: .35rem;
+    font-size: 0.35rem;
 }
-.conteinName{
-  font-size: .30rem;
+.conteinName {
+    font-size: 0.30rem;
 }
 .containBottom {
-  box-sizing: border-box;
-  position: fixed;
-  bottom: .88rem;
-  width: 100%;
-  height: .88rem;
-  padding: .1rem 0;
-  border-top: 1px solid #ddd;
-  background-color: #fff;
-  overflow: hidden;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0.88rem;
+    width: 100%;
+    height: 0.88rem;
+    padding: 0.1rem 0;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+    overflow: hidden;
 }
 .containBottom ul {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  width:40%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 .containIcon {
-  display: inline-block;
-  flex: 1 1 auto;
-  width: 30%;
-  height: 100%;
-  text-align: center;
-  cursor: pointer;
+    display: inline-block;
+    flex: 1 1 auto;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
 }
 .containIcon img {
-   height: 80%;
+    height: 80%;
 }
 .btns {
-  display: inline-flex;
-  width: 57%;
-  background-color: red;
-  border-radius: .5rem;
-  vertical-align: top;
-  overflow: hidden;
+    display: inline-flex;
+    width: 57%;
+    background-color: red;
+    border-radius: 0.5rem;
+    vertical-align: top;
+    overflow: hidden;
 }
 .btns span {
-  width: 50%;
-  text-align: center;
-  color: #fff;
-  font-size: .25rem;
-  line-height: .63rem;
-  border:0;
-  cursor: pointer;
-  &:first-child{
-    background: -webkit-linear-gradient(right,#ff9802,#ffc200); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right,#ff9802,#ffc200); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right,#ff9802,#ffc200); /* Firefox 3.6 - 15 */
-    background: linear-gradient(right,#ff9802,#ffc200);
-  }
-  &:last-child{
-    background: -webkit-linear-gradient(right,#ff4e22,#ff7a00); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right,#ff4e22,#ff7a00); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right,#ff4e22,#ff7a00); /* Firefox 3.6 - 15 */
-    background: linear-gradient(right,#ff4e22,#ff7a00);
-  }
+    width: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 0.25rem;
+    line-height: 0.63rem;
+    border: 0;
+    cursor: pointer;
+    &:first-child {
+        background: -webkit-linear-gradient(right,#ff9802,#ffc200);
+        /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right,#ff9802,#ffc200);
+        /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right,#ff9802,#ffc200);
+        /* Firefox 3.6 - 15 */
+        background: linear-gradient(right,#ff9802,#ffc200);
+    }
+    &:last-child {
+        background: -webkit-linear-gradient(right,#ff4e22,#ff7a00);
+        /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right,#ff4e22,#ff7a00);
+        /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right,#ff4e22,#ff7a00);
+        /* Firefox 3.6 - 15 */
+        background: linear-gradient(right,#ff4e22,#ff7a00);
+    }
 }
 .dialog {
-  position: fixed;
-  top:0;
-  right:0;
-  left:0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
 }
-.dialogShow{
-  position:absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60%;
-  background-color: #fff;
+.dialogShow {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    background-color: #fff;
 }
 .dialogTop {
-  height: 2rem;
-  width: 90%;
-  margin: 0 auto;
+    height: 2rem;
+    width: 90%;
+    margin: 0 auto;
 }
 .dialogImg {
-  display: inline-block;
-  width: 2rem;
-  height: 100%;
+    display: inline-block;
+    width: 2rem;
+    height: 100%;
 }
 .dialogImg img {
-  width: 100%;
+    width: 100%;
 
-  border-radius: .1rem;
+    border-radius: 0.1rem;
 }
 .dialogText {
-  display: inline-block;
-  margin-left: .2rem;
-  color: @money_color;
-  font-size: .30rem;
-  line-height: .30rem;
-  vertical-align: top;
+    display: inline-block;
+    margin-left: 0.2rem;
+    color: @money_color;
+    font-size: 0.30rem;
+    line-height: 0.30rem;
+    vertical-align: top;
 }
-.dialogText p:last-child{
-  color: #666;
+.dialogText p:last-child {
+    color: #666;
 }
-.dialogNumber{
-  width: 90%;
-  margin: 0 auto;
-  padding: .3rem 0;
-  font-size: .40rem;
+.dialogNumber {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0.3rem 0;
+    font-size: 0.40rem;
 
-  border-bottom: 1px solid #666;
-  overflow: hidden;
+    border-bottom: 1px solid #666;
+    overflow: hidden;
 }
 
-.dialogComfirm{
-  position: fixed;
-  bottom: 1.2rem;
-  width: 90%;
-  height: .8rem;
-  margin-left: 5%;
-  color: @base_color;
-  font-size: .38rem;
-  line-height: .8rem;
-  letter-spacing: .1rem;
-  text-align: center;
-  border-radius: .4rem;
-  background: -webkit-linear-gradient(right,#ff4e22,#ff852a); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(right,#ff4e22,#ff852a); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(right,#ff4e22,#ff852a); /* Firefox 3.6 - 15 */
-  background: linear-gradient(right,#ff4e22,#ff852a);
-  cursor: pointer;
+.dialogComfirm {
+    position: fixed;
+    bottom: 1.2rem;
+    width: 90%;
+    height: 0.8rem;
+    margin-left: 5%;
+    color: @base_color;
+    font-size: 0.38rem;
+    line-height: 0.8rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    border-radius: 0.4rem;
+    background: -webkit-linear-gradient(right,#ff4e22,#ff852a);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right,#ff4e22,#ff852a);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right,#ff4e22,#ff852a);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(right,#ff4e22,#ff852a);
+    cursor: pointer;
 }
 .infoTab {
-  position: fixed;
-  top: 60%;
-  width: 100%;
-  text-align: center;
-  font-size: .30rem;
+    position: fixed;
+    top: 60%;
+    width: 100%;
+    text-align: center;
+    font-size: 0.30rem;
 }
 .infoTab span {
-  display: inline-block;
-  padding: .1rem .2rem;
-  border-radius: .1rem;
-  background-color: rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.1rem;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 </style>

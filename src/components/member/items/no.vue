@@ -8,10 +8,10 @@
 
 <script>
 export default {
-  name: ' no',
+  name: 'no',
   data(){
     return {
-      
+
     }
   }
 

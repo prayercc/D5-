@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="carts">
+    <p class="back" @click="$router.go(-1)">&lt;&nbsp;返回</p>
     <div class="cartItem" v-for="(item,index) in cartList" :key="index">
       <div class="itemcheck">
         <input type="checkbox" :id="index" class="regular-checkbox" :value="item" v-model="buyList"/>

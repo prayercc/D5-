@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="dsh">
-    <div class="list" v-for="(order,index) of orders" :key="index">
+    <no-pages v-if="isShowNone"></no-pages>
+    <div class="list" v-for="(order,index) of orders" :key="index" v-else>
       <p class="listTop">订单号: {{order.date}}<span>卖家已经发货</span></p>
       <div class="listDetails" v-for="item in order.buyList">
         <div class="listPic">
@@ -24,8 +25,20 @@
 
 <script>
 import {mapState} from 'vuex'
+import NoPages from './no.vue'
 export default {
   name:'dsh',
+  data(){
+    return {
+      isShowNone: true
+    }
+  },
+  created(){
+    this.isShowNone = !this.orders.length;
+  },
+  components:{
+    NoPages
+  },
   computed: {
     ...mapState(['orders'])
   }
