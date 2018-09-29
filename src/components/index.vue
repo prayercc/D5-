@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="page" >
-    <headers></headers>
+    <!-- <headers></headers> -->
       <!-- content -->
       <transition :name="slidename">
           <div class="container" v-show="mainarea">
@@ -36,14 +36,14 @@
   </div>
 </template>
 <script>
-import Headers from './base/Header'
+// import Headers from './base/Header'
 import Carousel from 'vue-m-carousel'
 import IconList from './base/IconList'
 import { mapGetters, mapMutations } from 'vuex';
 export default {
   name: 'page',
   components: {
-    Headers,
+    // Headers,
     Carousel,
     IconList
   },

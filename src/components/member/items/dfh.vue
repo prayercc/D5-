@@ -1,16 +1,24 @@
 <template lang="html">
-  <div class="">
-
+  <div class="dfh">
+    <no-pages v-if="isShowNone"></no-pages>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import NoPages from './no.vue'
 export default {
-  name:'dfh',
-
+  name: 'dfh',
+  components:{
+    NoPages
+  },
+  data(){
+    return {
+      isShowNone: true
+    }
+  }
 }
 </script>
 
 <style lang="css">
+
 </style>

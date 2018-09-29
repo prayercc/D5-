@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <headers></headers> 
     <!-- content -->
     <keep-alive>
       <router-view/>
@@ -12,10 +13,12 @@
 
 <script>
 import "../static/js/rem.js";
+import Headers from './components/base/Header'
 import Footers from './components/base/Footer'
 export default {
   name: 'App',
   components:{
+    Headers,
     Footers
   },
   created(){

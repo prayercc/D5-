@@ -18,8 +18,8 @@ Vue.prototype.$http = axios;
 //lazyload
 Vue.use(VueLazyLoad, {
   preLoad: 1.3,
-  error: './static/img/github.png',
-  loading: './static/img/github.png',
+  error: 'http://localhost:8080/static/img/github.png',
+  loading: 'http://localhost:8080/static/img/github.png',
   attempt: 1
 })
 //解决移动端点击事件200ms延迟
